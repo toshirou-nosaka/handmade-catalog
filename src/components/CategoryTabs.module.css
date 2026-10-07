@@ -1,0 +1,29 @@
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto; /* スマホで項目が増えても横スクロールで収まる */
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  min-height: 40px; /* 指でタップしやすい高さ */
+  display: inline-flex;
+  align-items: center;
+}
+
+.tab:hover {
+  border-color: var(--accent);
+}
+
+.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}

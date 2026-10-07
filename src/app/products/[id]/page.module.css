@@ -1,0 +1,78 @@
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+/* スマホ：写真の下に説明 / PC：左右に並べる */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--border);
+}
+
+.image {
+  object-fit: cover;
+}
+
+.category {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 2px 12px;
+}
+
+.name {
+  font-size: 1.5rem;
+  margin: 8px 0 12px;
+  line-height: 1.4;
+}
+
+.description {
+  white-space: pre-line; /* データ内の改行（\n）をそのまま表示 */
+  margin: 0 0 28px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.9rem;
+}
+
+.back:hover {
+  border-color: var(--accent);
+}
