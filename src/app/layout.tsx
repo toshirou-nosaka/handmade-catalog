@@ -23,6 +23,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="site-title">
               {SITE_NAME}
             </Link>
+            {/* 自分の PC（npm run dev）でだけ表示 */}
+            {process.env.NODE_ENV === "development" && (
+              <Link href="/admin" className="admin-link">
+                管理画面
+              </Link>
+            )}
           </div>
         </header>
         <main>

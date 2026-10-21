@@ -1,3 +1,5 @@
+import productData from "./products.json";
+
 // ===== カテゴリ =====
 // slug は URL に使う英字（/category/wood など）
 export const categories = [
@@ -18,76 +20,10 @@ export type Product = {
   description: string;
 };
 
-// 作品を追加・編集するときはここを書き換えます。
-// imageUrl はサンプル画像です。実際の写真 URL に差し替えてください
-// （別ドメインの画像を使う場合は next.config.ts の remotePatterns にも追加）。
-export const products: Product[] = [
-  {
-    id: "1",
-    name: "山桜のカッティングボード",
-    category: "木工",
-    imageUrl: "https://picsum.photos/seed/wood-board/800/600",
-    description:
-      "山桜の一枚板から削り出したカッティングボード。オイル仕上げで、使うほどに色が深まります。\nサイズ：約 30×18×1.5cm",
-  },
-  {
-    id: "2",
-    name: "胡桃の木のスプーン",
-    category: "木工",
-    imageUrl: "https://picsum.photos/seed/wood-spoon/800/600",
-    description:
-      "口当たりのやさしい薄さに仕上げた胡桃のスプーン。スープやヨーグルトに。\n長さ：約 16cm",
-  },
-  {
-    id: "3",
-    name: "ブナの小物トレイ",
-    category: "木工",
-    imageUrl: "https://picsum.photos/seed/wood-tray/800/600",
-    description: "鍵やアクセサリーの置き場所に。ブナ材の明るい木目が魅力です。\nサイズ：約 20×12cm",
-  },
-  {
-    id: "4",
-    name: "リネンのトートバッグ",
-    category: "布",
-    imageUrl: "https://picsum.photos/seed/fabric-tote/800/600",
-    description: "厚手のリネンで仕立てた、A4 が入るトートバッグ。内ポケット付き。\nサイズ：約 36×32×10cm",
-  },
-  {
-    id: "5",
-    name: "刺し子のコースター（2枚組）",
-    category: "布",
-    imageUrl: "https://picsum.photos/seed/fabric-coaster/800/600",
-    description: "伝統柄の刺し子をひと針ずつ施したコースター。綿 100%。\nサイズ：約 10×10cm",
-  },
-  {
-    id: "6",
-    name: "ガーゼのあずま袋",
-    category: "布",
-    imageUrl: "https://picsum.photos/seed/fabric-bag/800/600",
-    description: "二重ガーゼのやわらかなあずま袋。お弁当包みやエコバッグに。",
-  },
-  {
-    id: "7",
-    name: "栃木レザーのキーケース",
-    category: "革",
-    imageUrl: "https://picsum.photos/seed/leather-key/800/600",
-    description: "ヌメ革を手縫いで仕立てたキーケース。経年変化をお楽しみください。\n鍵 4 本まで収納",
-  },
-  {
-    id: "8",
-    name: "手縫いのカードケース",
-    category: "革",
-    imageUrl: "https://picsum.photos/seed/leather-card/800/600",
-    description: "名刺やカードを約 20 枚収納できるシンプルなカードケース。",
-  },
-  {
-    id: "9",
-    name: "レザーのペンケース",
-    category: "革",
-    imageUrl: "https://picsum.photos/seed/leather-pen/800/600",
-    description: "ペン 5 本ほどが入るロール型のペンケース。革紐で巻いて留めます。",
-  },
-];
+// 作品データは products.json にあります。
+// 管理画面（npm run dev → http://localhost:3000/admin）から追加・編集・削除できます。
+// 手で編集してもかまいません（写真は public/images/ に置いて "/images/xxx.jpg" と書く）。
+export const products: Product[] = productData as Product[];
 
 // ===== 便利関数 =====
 export function getProductById(id: string): Product | undefined {
@@ -104,4 +40,8 @@ export function getCategorySlug(label: Category): CategorySlug {
 
 export function getProductsByCategory(label: Category): Product[] {
   return products.filter((p) => p.category === label);
+}
+
+export function isCategory(value: unknown): value is Category {
+  return categories.some((c) => c.label === value);
 }

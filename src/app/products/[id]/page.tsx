@@ -12,9 +12,6 @@ export function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
 }
 
-// 存在しない ID は 404
-export const dynamicParams = false;
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const product = getProductById(id);

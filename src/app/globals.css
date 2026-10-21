@@ -70,3 +70,15 @@ main {
   font-size: 0.8rem;
   color: var(--muted);
 }
+
+.site-header .container {
+  justify-content: space-between;
+}
+
+.admin-link {
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+}

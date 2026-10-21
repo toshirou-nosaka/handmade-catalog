@@ -21,22 +21,21 @@ npm run dev
 
 ブラウザで http://localhost:3000 を開きます。
 
-## 作品の追加・編集
+## 作品の追加・編集（管理画面）
 
-`src/data/products.ts` の `products` 配列を書き換えるだけです。
+1. `npm run dev` で起動し、http://localhost:3000/admin を開く（ヘッダー右上の「管理画面」からも行けます）
+2. 「＋ 作品を追加」／各作品の「編集」「削除」で変更する
+   - 写真はスマホ・PC の画像を選ぶだけ。長辺 1600px に縮小して `public/images/` に保存されます
+3. 上部の **「GitHub に保存して公開」** を押す → 1〜2 分で公開サイトに反映（Vercel が自動で更新）
 
-```ts
-{
-  id: "10",                         // 重複しない番号（URL になります）
-  name: "作品名",
-  category: "木工",                 // "木工" | "布" | "革" のどれか
-  imageUrl: "https://.../photo.jpg",
-  description: "説明文。\n改行もできます",
-},
-```
+管理画面は **自分の PC で起動したときだけ** 使えます。公開サイトの `/admin` は 404 で、外部から書き換えられることはありません。
 
-- 写真を別のサイト（例：Cloudinary などの画像ホスティング）に置く場合は、`next.config.ts` の `remotePatterns` にそのドメインを追加してください。
-- 写真をプロジェクト内に置く場合は `public/images/xxx.jpg` に入れて、`imageUrl: "/images/xxx.jpg"` と書けば設定不要です。
+### 手で編集する場合
+
+データは `src/data/products.json` にあります（`src/data/products.ts` が `const products` として読み込みます）。
+
+- `category` は "木工" | "布" | "革" のどれか
+- 写真を別のサイトに置く場合は、`next.config.ts` の `remotePatterns` にそのドメインを追加してください
 
 ## 公開（URL で見せる）
 
