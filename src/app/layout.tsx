@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { isAdminEnabled } from "@/lib/admin/guard";
 import "./globals.css";
 
 const SITE_NAME = "ハンドメイド作品カタログ";
@@ -23,8 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Link href="/" className="site-title">
               {SITE_NAME}
             </Link>
-            {/* 自分の PC（npm run dev）でだけ表示 */}
-            {process.env.NODE_ENV === "development" && (
+            {/* 管理画面が有効なときだけ表示（自分の PC の npm run dev のみ） */}
+            {isAdminEnabled() && (
               <Link href="/admin" className="admin-link">
                 管理画面
               </Link>
