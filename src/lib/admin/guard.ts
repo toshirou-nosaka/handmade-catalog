@@ -13,8 +13,8 @@ export class AdminError extends Error {
   }
 }
 
-// 管理画面のオン・オフ。もう一度使うときは true に戻す
-const ADMIN_SWITCH = false;
+// 管理画面のオン・オフ。使わないときは false にする
+const ADMIN_SWITCH = true;
 
 export function isAdminEnabled() {
   return ADMIN_SWITCH && process.env.NODE_ENV === "development";
